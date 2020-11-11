@@ -13,6 +13,7 @@ namespace tgwTask
         private DateTime resultStartTime { get; set; }
         private double resultInterval { get; set; }
         private int numberOfAisles { get; set; }
+        //private Dictionary<string, string> additionalInfo { get; set; }
 
         public Config()
         {
