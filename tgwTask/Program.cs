@@ -11,20 +11,17 @@ namespace tgwTask
         static void Main(string[] args)
         {
             Config config = new Config();
-
-            //take multiple file, until 0 is pressed
+            Console.WriteLine("Write names of config files, to finish press 0");
             Console.Write("Name of file: ");
-            string file = Console.ReadLine();
-
-            string textFile = "..\\..\\..\\" + file;
-            Read(textFile, config);
-
-            Console.WriteLine("Request config-id that you want to be loaded. Requesting \"All\" loads all config_ids. To finish press 0.");
-            string request = "";
-            while (!((request = Console.ReadLine()).Equals("0")))//reads config ids until 0 is pressed
+            string file = "";
+            while (!((file = Console.ReadLine()).Equals("0")))//reads file names until 0 is pressed
             {
-                config.writeConfigInfo(request);
+                string textFile = "..\\..\\..\\" + file;
+                Read(textFile, config);
             }
+
+            RequestInfo(config);
+            
 
         }
 
@@ -47,9 +44,19 @@ namespace tgwTask
 
                     string[] data = ln.Split(':');//cant split datetime
                     string tst = ln.Substring(ln.IndexOf(":") + 1);
-                    config.assignValue(data[0], tst);
-                    //Console.WriteLine("{0}: {1}", data[0], tst);
+
+                    config.AssignValue(data[0], tst);
                 }
+            }
+        }
+
+        public static void RequestInfo(Config config)
+        {
+            Console.WriteLine("Request config-id that you want to be loaded. Requesting \"All\" loads all config_ids. To finish press 0.");
+            string request = "";
+            while (!((request = Console.ReadLine()).Equals("0")))//reads config ids until 0 is pressed
+            {
+                config.WriteConfigInfo(request);
             }
         }
     }

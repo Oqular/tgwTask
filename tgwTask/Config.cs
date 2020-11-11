@@ -12,14 +12,30 @@ namespace tgwTask
         private string powerSupply { get; set; }
         private DateTime resultStartTime { get; set; }
         private double resultInterval { get; set; }
+        private int numberOfAisles { get; set; }
 
         public Config()
         {
+            this.ordersPerHour = -1;
+            this.orderLinesPerOrder = -1;
+            this.inboundStrategy = "Error";
+            this.powerSupply = "Error";
+            this.resultStartTime = DateTime.MinValue;
+            this.resultInterval = -1;
+            this.numberOfAisles = -1;
         }
 
         public void setOrdersPerHour(string ordersPerHour)
         {
-            this.ordersPerHour = int.Parse(ordersPerHour);
+            try
+            {
+                this.ordersPerHour = int.Parse(ordersPerHour);
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine("ordersPerHour input is not in a valid format!!!");
+                Console.WriteLine();//skip line to make exeption more clear
+            }
         }
 
         public int getOrdersPerHour()
@@ -29,7 +45,15 @@ namespace tgwTask
 
         public void setOrderLinesPerOrder(string orderLinesPerOrder)
         {
-            this.orderLinesPerOrder = int.Parse(orderLinesPerOrder);
+            try
+            {
+                this.orderLinesPerOrder = int.Parse(orderLinesPerOrder);
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine("orderLinesPerOrder input is not in a valid format!!!");
+                Console.WriteLine();//skip line to make exeption more clear
+            }
         }
 
         public int getOrderLinesPerOrder()
@@ -39,7 +63,15 @@ namespace tgwTask
 
         public void setInboundStrategy(string inboundStrategy)
         {
-            this.inboundStrategy = inboundStrategy;
+            if (inboundStrategy.Equals("random") || inboundStrategy.Equals("optimized"))
+            {
+                this.inboundStrategy = inboundStrategy;
+            }
+            else
+            {
+                Console.WriteLine("inboundStrategy can only be random/optimized");
+                Console.WriteLine();//skip line to make exeption more clear
+            }
         }
 
         public string getInboundStrategy()
@@ -49,7 +81,16 @@ namespace tgwTask
 
         public void setPowerSupply(string powerSupply)
         {
-            this.powerSupply = powerSupply;
+            
+            if (powerSupply.Equals("normal") || powerSupply.Equals("big"))
+            {
+                this.powerSupply = powerSupply;
+            }
+            else
+            {
+                Console.WriteLine("powerSupply can only be normal/big");
+                Console.WriteLine();//skip line to make exeption more clear
+            }
         }
 
         public string getPowerSupply()
@@ -59,7 +100,15 @@ namespace tgwTask
 
         public void setResultStartTime(string resultStartTime)
         {
-            this.resultStartTime = DateTime.Parse(resultStartTime);
+            try
+            {
+                this.resultStartTime = DateTime.Parse(resultStartTime);
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine("resultStartTime input is not in a valid format!!!");
+                Console.WriteLine();//skip line to make exeption more clear
+            }
         }
 
         public DateTime getResultStartTime()
@@ -69,7 +118,15 @@ namespace tgwTask
 
         public void setResultInterval(string resultInterval)
         {
-            this.resultInterval = double.Parse(resultInterval);
+            try
+            {
+                this.resultInterval = double.Parse(resultInterval);
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine("resultInterval input is not in a valid format!!!");
+                Console.WriteLine();//skip line to make exeption more clea
+            }
         }
 
         public double getResultInterval()
@@ -77,12 +134,31 @@ namespace tgwTask
             return this.resultInterval;
         }
 
+        public void setNumberOfAisles(string numberOfAisles)
+        {
+            try
+            {
+                this.numberOfAisles = int.Parse(numberOfAisles);
+                //Can check if aisles number is >=5 and assign powerSupply as big if true
+            }
+            catch(FormatException e)
+            {
+                Console.WriteLine("numberOfAisles input is not in a valid format!!!");
+                Console.WriteLine();//skip line to make exeption more clea
+            }
+        }
+
+        public int getNumberOfAisles()
+        {
+            return this.numberOfAisles;
+        }
+
         /// <summary>
         /// assign value to the property according to the config id
         /// </summary>
         /// <param name="id">config id</param>
         /// <param name="value">value that needs to be assigned</param>
-        public void assignValue(string id, string value)
+        public void AssignValue(string id, string value)
         {
             switch (id)
             {
@@ -104,17 +180,32 @@ namespace tgwTask
                 case nameof(this.resultInterval):
                     setResultInterval(value);
                     break;
+                case nameof(this.numberOfAisles):
+                    setNumberOfAisles(value);
+                    break;
                 default:
                     break;
             }
         }
 
-        public void writeConfigInfo(string id)
+        /// <summary>
+        /// writes config-value of requested config to console
+        /// </summary>
+        /// <param name="id">config-id</param>
+        public void WriteConfigInfo(string id)
         {
+            Console.WriteLine("If config-value is -1 or Error it either does not exist or is invalid");
             switch (id)
             {
                 case "All":
-                    Console.WriteLine("All info");
+                    Console.WriteLine("All info:");
+                    Console.WriteLine("{0}: {1}", nameof(this.ordersPerHour), this.ordersPerHour);
+                    Console.WriteLine("{0}: {1}", nameof(this.orderLinesPerOrder), this.orderLinesPerOrder);
+                    Console.WriteLine("{0}: {1}", nameof(this.inboundStrategy), this.inboundStrategy);
+                    Console.WriteLine("{0}: {1}", nameof(this.powerSupply), this.powerSupply);
+                    Console.WriteLine("{0}: {1}", nameof(this.resultStartTime), this.resultStartTime.ToString("HH:mm:ss"));
+                    Console.WriteLine("{0}: {1}", nameof(this.resultInterval), this.resultInterval);
+                    Console.WriteLine("{0}: {1}", nameof(this.numberOfAisles), this.numberOfAisles);
                     break;
                 case nameof(this.ordersPerHour):
                     Console.WriteLine("{0}: {1}", id, this.ordersPerHour);
