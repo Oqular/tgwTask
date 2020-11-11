@@ -1,0 +1,11 @@
+C:\Users\Oqular\Desktop\New folder (3)\tgwTask\tgwTask\bin\Debug\netcoreapp3.0\tgwTask.exe
+C:\Users\Oqular\Desktop\New folder (3)\tgwTask\tgwTask\bin\Debug\netcoreapp3.0\tgwTask.deps.json
+C:\Users\Oqular\Desktop\New folder (3)\tgwTask\tgwTask\bin\Debug\netcoreapp3.0\tgwTask.runtimeconfig.json
+C:\Users\Oqular\Desktop\New folder (3)\tgwTask\tgwTask\bin\Debug\netcoreapp3.0\tgwTask.runtimeconfig.dev.json
+C:\Users\Oqular\Desktop\New folder (3)\tgwTask\tgwTask\bin\Debug\netcoreapp3.0\tgwTask.dll
+C:\Users\Oqular\Desktop\New folder (3)\tgwTask\tgwTask\bin\Debug\netcoreapp3.0\tgwTask.pdb
+C:\Users\Oqular\Desktop\New folder (3)\tgwTask\tgwTask\obj\Debug\netcoreapp3.0\tgwTask.csprojAssemblyReference.cache
+C:\Users\Oqular\Desktop\New folder (3)\tgwTask\tgwTask\obj\Debug\netcoreapp3.0\tgwTask.AssemblyInfoInputs.cache
+C:\Users\Oqular\Desktop\New folder (3)\tgwTask\tgwTask\obj\Debug\netcoreapp3.0\tgwTask.AssemblyInfo.cs
+C:\Users\Oqular\Desktop\New folder (3)\tgwTask\tgwTask\obj\Debug\netcoreapp3.0\tgwTask.dll
+C:\Users\Oqular\Desktop\New folder (3)\tgwTask\tgwTask\obj\Debug\netcoreapp3.0\tgwTask.pdb
